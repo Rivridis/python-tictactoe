@@ -1,4 +1,3 @@
-import pygame as p
 import numpy as np
 import random
 import time
@@ -8,7 +7,7 @@ board = np.array([["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]])
 print(board)
 
 # -- Taking input --
-coin = input("Choose : [X/O]")
+coin = input("Choose : [X/O]").upper()
 cc = ""
 
 # -- Checking input Validity --
@@ -83,6 +82,17 @@ while True:
     print("Computer's turn")
     time.sleep(0.5)
 
+     # -- Check Tie Condition --
+    Ch = False
+    for i in board:
+        for j in i:
+            if str(j) == "-":
+                Ch = True
+
+    if Ch == False:
+        print('Tie')
+        break
+
     # -- Computer Turn --
     while True:
         p1 = random.randint(0, 2)
@@ -98,7 +108,7 @@ while True:
         exit()
     time.sleep(1)
 
-    #-- Check Tie Condition --
+     # -- Check Tie Condition --
     Ch = False
     for i in board:
         for j in i:
@@ -108,3 +118,5 @@ while True:
     if Ch == False:
         print('Tie')
         break
+
+
